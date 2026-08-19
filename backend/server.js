@@ -3,6 +3,9 @@ const http = require('http');
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
+  // Allow your Vercel frontend to communicate with this backend
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
   if (req.url === '/hello' && req.method === 'GET') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello World!');
@@ -13,5 +16,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
+  console.log(`Server running on port ${PORT}`);
 });
