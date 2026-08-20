@@ -13,7 +13,7 @@ client.connect();
 const server = http.createServer(async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
 
-  if (req.url === '/hello' && req.method === 'GET') {
+  if (req.url === '/' && req.method === 'GET') {
     const result = await client.query('SELECT NOW()');
 
     res.writeHead(200, { 'Content-Type': 'text/plain' });
